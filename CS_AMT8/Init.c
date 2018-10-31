@@ -21,6 +21,12 @@ void SendChar(char data)
 		UDR=data;
 	}
 }
+void SendInfoStatus(unsigned char info,unsigned char abb,unsigned char spec)
+{
+	SendChar(info);
+	SendChar(abb);
+	SendChar(spec);
+}
 
 void UartInit(void)
 {
@@ -37,7 +43,7 @@ void UartInit(void)
 	UCSRC = (1<<URSEL) | (1<<UCSZ1) | (1<<UCSZ0);
 	UCSRB = (1<<TXEN) | (1<<RXEN);
 	_delay_ms(10);
-	SendChar(0x00);
+	SendInfoStatus(0x00,0x00,0x00);
 }
 
 void SendADCValue(unsigned char _chaneladdress,uint16_t data)
@@ -48,6 +54,8 @@ void SendADCValue(unsigned char _chaneladdress,uint16_t data)
 	SendChar(h);
 	SendChar(l);
 }
+
+
 
 void PWMInit(void)
 {

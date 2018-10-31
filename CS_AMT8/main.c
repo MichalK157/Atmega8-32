@@ -11,7 +11,7 @@
 #include <avr/interrupt.h>
 #include "Init.h"
 
-volatile static	uint8_t _Status= 1;
+volatile static	uint8_t _Status=0;
 volatile static uint16_t adc_board;
 volatile static uint16_t adc_sensor1;
 volatile static uint16_t adc_sensor2;
@@ -27,6 +27,7 @@ volatile const uint8_t _add_ch_sensor3=0x23;	//chanel3
 
 int main(void)
 {
+	
 	DDRD|=(1<<PIND7);	//EN12
 	DDRB|=(1<<PINB0);	//EN34
 	PORTD|=(1<<PIND7);
@@ -36,7 +37,7 @@ int main(void)
 	ADCInit();
 	PWMInit();
 	UartInit();
-	
+
 	PWM(0);
 	
 	GICR=(1<<INT0);
