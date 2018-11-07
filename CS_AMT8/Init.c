@@ -55,7 +55,10 @@ void SendADCValue(unsigned char _chaneladdress,uint16_t data)
 	SendChar(l);
 }
 
-
+char GetChar(){
+	while (!(UCSRA&(1<<RXC)));
+	return UDR;
+}
 
 void PWMInit(void)
 {
@@ -100,4 +103,8 @@ void OnAdc()
 void OffAdc()
 {
 	ADCSRA&=~(1<ADEN);
+}
+void SendADCValueFomSelectChanel(char _data)
+{
+	SendADCValue(((uint8_t)_data+32),ReadAdc((uint8_t)_data));
 }

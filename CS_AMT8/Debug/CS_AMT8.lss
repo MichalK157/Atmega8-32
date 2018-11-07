@@ -3,38 +3,38 @@ CS_AMT8.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .text         0000028a  00000000  00000000  00000094  2**1
+  0 .text         000002be  00000000  00000000  00000094  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  1 .data         00000004  00800060  0000028a  0000031e  2**0
+  1 .data         00000002  00800060  000002be  00000352  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  2 .bss          00000007  00800064  00800064  00000322  2**0
+  2 .bss          0000000b  00800062  00800062  00000354  2**0
                   ALLOC
-  3 .comment      00000030  00000000  00000000  00000322  2**0
+  3 .comment      00000030  00000000  00000000  00000354  2**0
                   CONTENTS, READONLY
-  4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  00000354  2**2
+  4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  00000384  2**2
                   CONTENTS, READONLY
-  5 .debug_aranges 00000098  00000000  00000000  00000390  2**0
+  5 .debug_aranges 000000b8  00000000  00000000  000003c0  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_info   00000c0e  00000000  00000000  00000428  2**0
+  6 .debug_info   00000d2c  00000000  00000000  00000478  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_abbrev 000007a3  00000000  00000000  00001036  2**0
+  7 .debug_abbrev 00000819  00000000  00000000  000011a4  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   000005a8  00000000  00000000  000017d9  2**0
+  8 .debug_line   0000063d  00000000  00000000  000019bd  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_frame  0000015c  00000000  00000000  00001d84  2**2
+  9 .debug_frame  000001b0  00000000  00000000  00001ffc  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    00000455  00000000  00000000  00001ee0  2**0
+ 10 .debug_str    0000049f  00000000  00000000  000021ac  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    000003db  00000000  00000000  00002335  2**0
+ 11 .debug_loc    0000044a  00000000  00000000  0000264b  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 00000078  00000000  00000000  00002710  2**0
+ 12 .debug_ranges 00000098  00000000  00000000  00002a95  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
 
 00000000 <__vectors>:
    0:	12 c0       	rjmp	.+36     	; 0x26 <__ctors_end>
-   2:	2b c1       	rjmp	.+598    	; 0x25a <__vector_1>
+   2:	d8 c0       	rjmp	.+432    	; 0x1b4 <__vector_1>
    4:	2b c0       	rjmp	.+86     	; 0x5c <__bad_interrupt>
    6:	2a c0       	rjmp	.+84     	; 0x5c <__bad_interrupt>
    8:	29 c0       	rjmp	.+82     	; 0x5c <__bad_interrupt>
@@ -47,7 +47,7 @@ Disassembly of section .text:
   16:	22 c0       	rjmp	.+68     	; 0x5c <__bad_interrupt>
   18:	21 c0       	rjmp	.+66     	; 0x5c <__bad_interrupt>
   1a:	20 c0       	rjmp	.+64     	; 0x5c <__bad_interrupt>
-  1c:	dd c0       	rjmp	.+442    	; 0x1d8 <__vector_14>
+  1c:	8a c0       	rjmp	.+276    	; 0x132 <__vector_14>
   1e:	1e c0       	rjmp	.+60     	; 0x5c <__bad_interrupt>
   20:	1d c0       	rjmp	.+58     	; 0x5c <__bad_interrupt>
   22:	1c c0       	rjmp	.+56     	; 0x5c <__bad_interrupt>
@@ -65,18 +65,18 @@ Disassembly of section .text:
   32:	10 e0       	ldi	r17, 0x00	; 0
   34:	a0 e6       	ldi	r26, 0x60	; 96
   36:	b0 e0       	ldi	r27, 0x00	; 0
-  38:	ea e8       	ldi	r30, 0x8A	; 138
+  38:	ee eb       	ldi	r30, 0xBE	; 190
   3a:	f2 e0       	ldi	r31, 0x02	; 2
   3c:	02 c0       	rjmp	.+4      	; 0x42 <__SREG__+0x3>
   3e:	05 90       	lpm	r0, Z+
   40:	0d 92       	st	X+, r0
-  42:	a4 36       	cpi	r26, 0x64	; 100
+  42:	a2 36       	cpi	r26, 0x62	; 98
   44:	b1 07       	cpc	r27, r17
   46:	d9 f7       	brne	.-10     	; 0x3e <__SP_H__>
 
 00000048 <__do_clear_bss>:
   48:	20 e0       	ldi	r18, 0x00	; 0
-  4a:	a4 e6       	ldi	r26, 0x64	; 100
+  4a:	a2 e6       	ldi	r26, 0x62	; 98
   4c:	b0 e0       	ldi	r27, 0x00	; 0
   4e:	01 c0       	rjmp	.+2      	; 0x52 <.do_clear_bss_start>
 
@@ -84,11 +84,11 @@ Disassembly of section .text:
   50:	1d 92       	st	X+, r1
 
 00000052 <.do_clear_bss_start>:
-  52:	ab 36       	cpi	r26, 0x6B	; 107
+  52:	ad 36       	cpi	r26, 0x6D	; 109
   54:	b2 07       	cpc	r27, r18
   56:	e1 f7       	brne	.-8      	; 0x50 <.do_clear_bss_loop>
-  58:	68 d0       	rcall	.+208    	; 0x12a <main>
-  5a:	15 c1       	rjmp	.+554    	; 0x286 <_exit>
+  58:	d8 d0       	rcall	.+432    	; 0x20a <main>
+  5a:	2f c1       	rjmp	.+606    	; 0x2ba <_exit>
 
 0000005c <__bad_interrupt>:
   5c:	d1 cf       	rjmp	.-94     	; 0x0 <__vectors>
@@ -181,354 +181,426 @@ void UartInit(void)
 void SendADCValue(unsigned char _chaneladdress,uint16_t data)
 {
 	h=(unsigned char)(data>>8);
-  a8:	70 93 65 00 	sts	0x0065, r23	; 0x800065 <h>
+  a8:	70 93 63 00 	sts	0x0063, r23	; 0x800063 <h>
 	l=(unsigned char)(data);
-  ac:	60 93 64 00 	sts	0x0064, r22	; 0x800064 <__data_end>
+  ac:	60 93 62 00 	sts	0x0062, r22	; 0x800062 <__data_end>
 	SendChar(_chaneladdress);
   b0:	d6 df       	rcall	.-84     	; 0x5e <SendChar>
 	SendChar(h);
-  b2:	80 91 65 00 	lds	r24, 0x0065	; 0x800065 <h>
+  b2:	80 91 63 00 	lds	r24, 0x0063	; 0x800063 <h>
   b6:	d3 df       	rcall	.-90     	; 0x5e <SendChar>
 	SendChar(l);
-  b8:	80 91 64 00 	lds	r24, 0x0064	; 0x800064 <__data_end>
+  b8:	80 91 62 00 	lds	r24, 0x0062	; 0x800062 <__data_end>
   bc:	d0 df       	rcall	.-96     	; 0x5e <SendChar>
   be:	08 95       	ret
 
-000000c0 <PWMInit>:
+000000c0 <GetChar>:
+}
 
+char GetChar(){
+	while (!(UCSRA&(1<<RXC)));
+  c0:	5f 9b       	sbis	0x0b, 7	; 11
+  c2:	fe cf       	rjmp	.-4      	; 0xc0 <GetChar>
+	return UDR;
+  c4:	8c b1       	in	r24, 0x0c	; 12
+}
+  c6:	08 95       	ret
 
+000000c8 <PWMInit>:
 
 void PWMInit(void)
 {
 	DDRB|=(1<<PINB1)|(1<<PINB2);
-  c0:	87 b3       	in	r24, 0x17	; 23
-  c2:	86 60       	ori	r24, 0x06	; 6
-  c4:	87 bb       	out	0x17, r24	; 23
+  c8:	87 b3       	in	r24, 0x17	; 23
+  ca:	86 60       	ori	r24, 0x06	; 6
+  cc:	87 bb       	out	0x17, r24	; 23
 	//TCCR1A |= (1<<WGM12)|(1<<WGM10);		//8bit Fast PWM
 	//TCCR1B |= (1<<WGM12)|(1<<WGM10);
 	TCCR1A |= (1<<WGM12)|(1<<WGM11)|(1<<WGM10);	//10bit Fast PWM
-  c6:	8f b5       	in	r24, 0x2f	; 47
-  c8:	8b 60       	ori	r24, 0x0B	; 11
-  ca:	8f bd       	out	0x2f, r24	; 47
+  ce:	8f b5       	in	r24, 0x2f	; 47
+  d0:	8b 60       	ori	r24, 0x0B	; 11
+  d2:	8f bd       	out	0x2f, r24	; 47
 	TCCR1B |= (1<<WGM12)|(1<<WGM11)|(1<<WGM10);
-  cc:	8e b5       	in	r24, 0x2e	; 46
-  ce:	8b 60       	ori	r24, 0x0B	; 11
-  d0:	8e bd       	out	0x2e, r24	; 46
+  d4:	8e b5       	in	r24, 0x2e	; 46
+  d6:	8b 60       	ori	r24, 0x0B	; 11
+  d8:	8e bd       	out	0x2e, r24	; 46
 	TCCR1A |= (1<<COM1A1)|(1<<COM1B1);	//
-  d2:	8f b5       	in	r24, 0x2f	; 47
-  d4:	80 6a       	ori	r24, 0xA0	; 160
-  d6:	8f bd       	out	0x2f, r24	; 47
+  da:	8f b5       	in	r24, 0x2f	; 47
+  dc:	80 6a       	ori	r24, 0xA0	; 160
+  de:	8f bd       	out	0x2f, r24	; 47
 	TCCR1B |= (1<<CS10);	//Prescaler 1 |(1<<CS11)
-  d8:	8e b5       	in	r24, 0x2e	; 46
-  da:	81 60       	ori	r24, 0x01	; 1
-  dc:	8e bd       	out	0x2e, r24	; 46
+  e0:	8e b5       	in	r24, 0x2e	; 46
+  e2:	81 60       	ori	r24, 0x01	; 1
+  e4:	8e bd       	out	0x2e, r24	; 46
 	TCCR1A |= (1<<CS10);
-  de:	8f b5       	in	r24, 0x2f	; 47
-  e0:	81 60       	ori	r24, 0x01	; 1
-  e2:	8f bd       	out	0x2f, r24	; 47
-  e4:	08 95       	ret
+  e6:	8f b5       	in	r24, 0x2f	; 47
+  e8:	81 60       	ori	r24, 0x01	; 1
+  ea:	8f bd       	out	0x2f, r24	; 47
+  ec:	08 95       	ret
 
-000000e6 <PWM>:
+000000ee <PWM>:
 }
 
 void PWM(uint16_t _pwm)
 {
 	OCR1A=_pwm;
-  e6:	9b bd       	out	0x2b, r25	; 43
-  e8:	8a bd       	out	0x2a, r24	; 42
+  ee:	9b bd       	out	0x2b, r25	; 43
+  f0:	8a bd       	out	0x2a, r24	; 42
 	OCR1B=_pwm;
-  ea:	99 bd       	out	0x29, r25	; 41
-  ec:	88 bd       	out	0x28, r24	; 40
-  ee:	08 95       	ret
+  f2:	99 bd       	out	0x29, r25	; 41
+  f4:	88 bd       	out	0x28, r24	; 40
+  f6:	08 95       	ret
 
-000000f0 <ADCInit>:
+000000f8 <ADCInit>:
 }
 
 void ADCInit()
 {
 	ADMUX|=(1<<REFS0);
-  f0:	3e 9a       	sbi	0x07, 6	; 7
+  f8:	3e 9a       	sbi	0x07, 6	; 7
 	ADCSRA|=((1<<ADEN)|(1<<ADIE)|(1<<ADPS2)|(1<<ADPS1)|(1<<ADPS0));
-  f2:	86 b1       	in	r24, 0x06	; 6
-  f4:	8f 68       	ori	r24, 0x8F	; 143
-  f6:	86 b9       	out	0x06, r24	; 6
-  f8:	2f ef       	ldi	r18, 0xFF	; 255
-  fa:	84 e3       	ldi	r24, 0x34	; 52
-  fc:	9c e0       	ldi	r25, 0x0C	; 12
-  fe:	21 50       	subi	r18, 0x01	; 1
- 100:	80 40       	sbci	r24, 0x00	; 0
- 102:	90 40       	sbci	r25, 0x00	; 0
- 104:	e1 f7       	brne	.-8      	; 0xfe <ADCInit+0xe>
- 106:	00 c0       	rjmp	.+0      	; 0x108 <ADCInit+0x18>
- 108:	00 00       	nop
- 10a:	08 95       	ret
+  fa:	86 b1       	in	r24, 0x06	; 6
+  fc:	8f 68       	ori	r24, 0x8F	; 143
+  fe:	86 b9       	out	0x06, r24	; 6
+ 100:	2f ef       	ldi	r18, 0xFF	; 255
+ 102:	84 e3       	ldi	r24, 0x34	; 52
+ 104:	9c e0       	ldi	r25, 0x0C	; 12
+ 106:	21 50       	subi	r18, 0x01	; 1
+ 108:	80 40       	sbci	r24, 0x00	; 0
+ 10a:	90 40       	sbci	r25, 0x00	; 0
+ 10c:	e1 f7       	brne	.-8      	; 0x106 <ADCInit+0xe>
+ 10e:	00 c0       	rjmp	.+0      	; 0x110 <ADCInit+0x18>
+ 110:	00 00       	nop
+ 112:	08 95       	ret
 
-0000010c <ReadAdc>:
+00000114 <ReadAdc>:
 }
 
 uint16_t ReadAdc(uint8_t chanel)
 {
 	chanel&=0x07;
 	ADMUX=(ADMUX&0xf8)|chanel;
- 10c:	97 b1       	in	r25, 0x07	; 7
- 10e:	98 7f       	andi	r25, 0xF8	; 248
- 110:	87 70       	andi	r24, 0x07	; 7
- 112:	89 2b       	or	r24, r25
- 114:	87 b9       	out	0x07, r24	; 7
+ 114:	97 b1       	in	r25, 0x07	; 7
+ 116:	98 7f       	andi	r25, 0xF8	; 248
+ 118:	87 70       	andi	r24, 0x07	; 7
+ 11a:	89 2b       	or	r24, r25
+ 11c:	87 b9       	out	0x07, r24	; 7
 	ADCSRA|=(1<<ADSC);
- 116:	36 9a       	sbi	0x06, 6	; 6
+ 11e:	36 9a       	sbi	0x06, 6	; 6
 	while(ADCSRA&(1<<ADSC));
- 118:	36 99       	sbic	0x06, 6	; 6
- 11a:	fe cf       	rjmp	.-4      	; 0x118 <ReadAdc+0xc>
+ 120:	36 99       	sbic	0x06, 6	; 6
+ 122:	fe cf       	rjmp	.-4      	; 0x120 <ReadAdc+0xc>
 	return ADC;
- 11c:	84 b1       	in	r24, 0x04	; 4
- 11e:	95 b1       	in	r25, 0x05	; 5
+ 124:	84 b1       	in	r24, 0x04	; 4
+ 126:	95 b1       	in	r25, 0x05	; 5
 }
- 120:	08 95       	ret
+ 128:	08 95       	ret
 
-00000122 <OnAdc>:
+0000012a <OnAdc>:
 
 void OnAdc()
 {
 	ADCSRA|=(1<<ADEN);
- 122:	37 9a       	sbi	0x06, 7	; 6
- 124:	08 95       	ret
+ 12a:	37 9a       	sbi	0x06, 7	; 6
+ 12c:	08 95       	ret
 
-00000126 <OffAdc>:
+0000012e <OffAdc>:
 }
 
 void OffAdc()
 {
 	ADCSRA&=~(1<ADEN);
- 126:	30 98       	cbi	0x06, 0	; 6
- 128:	08 95       	ret
+ 12e:	30 98       	cbi	0x06, 0	; 6
+ 130:	08 95       	ret
 
-0000012a <main>:
-volatile const uint8_t _add_ch_sensor3=0x23;	//chanel3
-
-int main(void)
-{
-	
-	DDRD|=(1<<PIND7);	//EN12
- 12a:	8f 9a       	sbi	0x11, 7	; 17
-	DDRB|=(1<<PINB0);	//EN34
- 12c:	b8 9a       	sbi	0x17, 0	; 23
-	PORTD|=(1<<PIND7);
- 12e:	97 9a       	sbi	0x12, 7	; 18
-	PORTB|=(1<<PINB0);
- 130:	c0 9a       	sbi	0x18, 0	; 24
-	DDRD &=~((1<<PIND2)|(1<<PIND3)); //input interr
- 132:	81 b3       	in	r24, 0x11	; 17
- 134:	83 7f       	andi	r24, 0xF3	; 243
- 136:	81 bb       	out	0x11, r24	; 17
-	
-	ADCInit();
- 138:	db df       	rcall	.-74     	; 0xf0 <ADCInit>
-	PWMInit();
- 13a:	c2 df       	rcall	.-124    	; 0xc0 <PWMInit>
-	UartInit();
- 13c:	a0 df       	rcall	.-192    	; 0x7e <UartInit>
-
-	PWM(0);
- 13e:	80 e0       	ldi	r24, 0x00	; 0
- 140:	90 e0       	ldi	r25, 0x00	; 0
- 142:	d1 df       	rcall	.-94     	; 0xe6 <PWM>
-	
-	GICR=(1<<INT0);
- 144:	80 e4       	ldi	r24, 0x40	; 64
- 146:	8b bf       	out	0x3b, r24	; 59
-	MCUCR|=(1<<ISC00);		//		(1<<ISC00);any logical change			//	(1<<ISC01)|(1<<ISC00);rising edge
- 148:	85 b7       	in	r24, 0x35	; 53
- 14a:	81 60       	ori	r24, 0x01	; 1
- 14c:	85 bf       	out	0x35, r24	; 53
-	
-	sei();
- 14e:	78 94       	sei
-	
-    while (1) 
-    {		
-		OnAdc();
- 150:	e8 df       	rcall	.-48     	; 0x122 <OnAdc>
-		adc_board=ReadAdc(__ch_board);
- 152:	80 91 63 00 	lds	r24, 0x0063	; 0x800063 <__ch_board>
- 156:	da df       	rcall	.-76     	; 0x10c <ReadAdc>
- 158:	90 93 69 00 	sts	0x0069, r25	; 0x800069 <adc_board+0x1>
- 15c:	80 93 68 00 	sts	0x0068, r24	; 0x800068 <adc_board>
- 160:	8f e0       	ldi	r24, 0x0F	; 15
- 162:	97 e2       	ldi	r25, 0x27	; 39
- 164:	01 97       	sbiw	r24, 0x01	; 1
- 166:	f1 f7       	brne	.-4      	; 0x164 <main+0x3a>
- 168:	00 c0       	rjmp	.+0      	; 0x16a <main+0x40>
- 16a:	00 00       	nop
-		_delay_ms(5);
-		adc_sensor1=ReadAdc(__ch_sensor1);
- 16c:	80 91 62 00 	lds	r24, 0x0062	; 0x800062 <__ch_sensor1>
- 170:	cd df       	rcall	.-102    	; 0x10c <ReadAdc>
- 172:	90 93 67 00 	sts	0x0067, r25	; 0x800067 <adc_sensor1+0x1>
- 176:	80 93 66 00 	sts	0x0066, r24	; 0x800066 <adc_sensor1>
- 17a:	8f e0       	ldi	r24, 0x0F	; 15
- 17c:	97 e2       	ldi	r25, 0x27	; 39
- 17e:	01 97       	sbiw	r24, 0x01	; 1
- 180:	f1 f7       	brne	.-4      	; 0x17e <main+0x54>
- 182:	00 c0       	rjmp	.+0      	; 0x184 <main+0x5a>
- 184:	00 00       	nop
-		_delay_ms(5);
-		if (_Status)
- 186:	80 91 6a 00 	lds	r24, 0x006A	; 0x80006a <_Status>
- 18a:	88 23       	and	r24, r24
- 18c:	d1 f0       	breq	.+52     	; 0x1c2 <main+0x98>
-		{	
-			//Uart comunication Send data do pc
-			SendADCValue(_add_ch_board,adc_board);
- 18e:	60 91 68 00 	lds	r22, 0x0068	; 0x800068 <adc_board>
- 192:	70 91 69 00 	lds	r23, 0x0069	; 0x800069 <adc_board+0x1>
- 196:	80 91 61 00 	lds	r24, 0x0061	; 0x800061 <_add_ch_board>
- 19a:	86 df       	rcall	.-244    	; 0xa8 <SendADCValue>
- 19c:	8f e0       	ldi	r24, 0x0F	; 15
- 19e:	97 e2       	ldi	r25, 0x27	; 39
- 1a0:	01 97       	sbiw	r24, 0x01	; 1
- 1a2:	f1 f7       	brne	.-4      	; 0x1a0 <main+0x76>
- 1a4:	00 c0       	rjmp	.+0      	; 0x1a6 <main+0x7c>
- 1a6:	00 00       	nop
-			_delay_ms(5);
-			SendADCValue(_add_ch_sensor1,adc_sensor1);
- 1a8:	60 91 66 00 	lds	r22, 0x0066	; 0x800066 <adc_sensor1>
- 1ac:	70 91 67 00 	lds	r23, 0x0067	; 0x800067 <adc_sensor1+0x1>
- 1b0:	80 91 60 00 	lds	r24, 0x0060	; 0x800060 <__data_start>
- 1b4:	79 df       	rcall	.-270    	; 0xa8 <SendADCValue>
- 1b6:	8f e0       	ldi	r24, 0x0F	; 15
- 1b8:	97 e2       	ldi	r25, 0x27	; 39
- 1ba:	01 97       	sbiw	r24, 0x01	; 1
- 1bc:	f1 f7       	brne	.-4      	; 0x1ba <main+0x90>
- 1be:	00 c0       	rjmp	.+0      	; 0x1c0 <main+0x96>
- 1c0:	00 00       	nop
-			_delay_ms(5);
-		}
-		OffAdc();
- 1c2:	b1 df       	rcall	.-158    	; 0x126 <OffAdc>
- 1c4:	9f ef       	ldi	r25, 0xFF	; 255
- 1c6:	29 e6       	ldi	r18, 0x69	; 105
- 1c8:	88 e1       	ldi	r24, 0x18	; 24
- 1ca:	91 50       	subi	r25, 0x01	; 1
- 1cc:	20 40       	sbci	r18, 0x00	; 0
- 1ce:	80 40       	sbci	r24, 0x00	; 0
- 1d0:	e1 f7       	brne	.-8      	; 0x1ca <main+0xa0>
- 1d2:	00 c0       	rjmp	.+0      	; 0x1d4 <main+0xaa>
- 1d4:	00 00       	nop
- 1d6:	bc cf       	rjmp	.-136    	; 0x150 <main+0x26>
-
-000001d8 <__vector_14>:
+00000132 <__vector_14>:
 		_delay_ms(1000);
 	}
 }
 
 ISR(ADC_vect)
 {
- 1d8:	1f 92       	push	r1
- 1da:	0f 92       	push	r0
- 1dc:	0f b6       	in	r0, 0x3f	; 63
- 1de:	0f 92       	push	r0
- 1e0:	11 24       	eor	r1, r1
- 1e2:	2f 93       	push	r18
- 1e4:	3f 93       	push	r19
- 1e6:	4f 93       	push	r20
- 1e8:	5f 93       	push	r21
- 1ea:	6f 93       	push	r22
- 1ec:	7f 93       	push	r23
- 1ee:	8f 93       	push	r24
- 1f0:	9f 93       	push	r25
- 1f2:	af 93       	push	r26
- 1f4:	bf 93       	push	r27
- 1f6:	ef 93       	push	r30
- 1f8:	ff 93       	push	r31
+ 132:	1f 92       	push	r1
+ 134:	0f 92       	push	r0
+ 136:	0f b6       	in	r0, 0x3f	; 63
+ 138:	0f 92       	push	r0
+ 13a:	11 24       	eor	r1, r1
+ 13c:	2f 93       	push	r18
+ 13e:	3f 93       	push	r19
+ 140:	4f 93       	push	r20
+ 142:	5f 93       	push	r21
+ 144:	6f 93       	push	r22
+ 146:	7f 93       	push	r23
+ 148:	8f 93       	push	r24
+ 14a:	9f 93       	push	r25
+ 14c:	af 93       	push	r26
+ 14e:	bf 93       	push	r27
+ 150:	ef 93       	push	r30
+ 152:	ff 93       	push	r31
 	if(adc_sensor1<150){
- 1fa:	80 91 66 00 	lds	r24, 0x0066	; 0x800066 <adc_sensor1>
- 1fe:	90 91 67 00 	lds	r25, 0x0067	; 0x800067 <adc_sensor1+0x1>
- 202:	86 39       	cpi	r24, 0x96	; 150
- 204:	91 05       	cpc	r25, r1
- 206:	20 f4       	brcc	.+8      	; 0x210 <__vector_14+0x38>
+ 154:	80 91 64 00 	lds	r24, 0x0064	; 0x800064 <adc_sensor1>
+ 158:	90 91 65 00 	lds	r25, 0x0065	; 0x800065 <adc_sensor1+0x1>
+ 15c:	86 39       	cpi	r24, 0x96	; 150
+ 15e:	91 05       	cpc	r25, r1
+ 160:	20 f4       	brcc	.+8      	; 0x16a <__vector_14+0x38>
 		PWM(300);
- 208:	8c e2       	ldi	r24, 0x2C	; 44
- 20a:	91 e0       	ldi	r25, 0x01	; 1
- 20c:	6c df       	rcall	.-296    	; 0xe6 <PWM>
- 20e:	14 c0       	rjmp	.+40     	; 0x238 <__vector_14+0x60>
+ 162:	8c e2       	ldi	r24, 0x2C	; 44
+ 164:	91 e0       	ldi	r25, 0x01	; 1
+ 166:	c3 df       	rcall	.-122    	; 0xee <PWM>
+ 168:	14 c0       	rjmp	.+40     	; 0x192 <__vector_14+0x60>
 	}
 	else {
 		if(adc_sensor1*2>1023){
- 210:	80 91 66 00 	lds	r24, 0x0066	; 0x800066 <adc_sensor1>
- 214:	90 91 67 00 	lds	r25, 0x0067	; 0x800067 <adc_sensor1+0x1>
- 218:	88 0f       	add	r24, r24
- 21a:	99 1f       	adc	r25, r25
- 21c:	81 15       	cp	r24, r1
- 21e:	94 40       	sbci	r25, 0x04	; 4
- 220:	20 f0       	brcs	.+8      	; 0x22a <__vector_14+0x52>
+ 16a:	80 91 64 00 	lds	r24, 0x0064	; 0x800064 <adc_sensor1>
+ 16e:	90 91 65 00 	lds	r25, 0x0065	; 0x800065 <adc_sensor1+0x1>
+ 172:	88 0f       	add	r24, r24
+ 174:	99 1f       	adc	r25, r25
+ 176:	81 15       	cp	r24, r1
+ 178:	94 40       	sbci	r25, 0x04	; 4
+ 17a:	20 f0       	brcs	.+8      	; 0x184 <__vector_14+0x52>
 			PWM(1023);
- 222:	8f ef       	ldi	r24, 0xFF	; 255
- 224:	93 e0       	ldi	r25, 0x03	; 3
- 226:	5f df       	rcall	.-322    	; 0xe6 <PWM>
- 228:	07 c0       	rjmp	.+14     	; 0x238 <__vector_14+0x60>
+ 17c:	8f ef       	ldi	r24, 0xFF	; 255
+ 17e:	93 e0       	ldi	r25, 0x03	; 3
+ 180:	b6 df       	rcall	.-148    	; 0xee <PWM>
+ 182:	07 c0       	rjmp	.+14     	; 0x192 <__vector_14+0x60>
 		}
 		else{
 			PWM(adc_sensor1*2);
- 22a:	80 91 66 00 	lds	r24, 0x0066	; 0x800066 <adc_sensor1>
- 22e:	90 91 67 00 	lds	r25, 0x0067	; 0x800067 <adc_sensor1+0x1>
- 232:	88 0f       	add	r24, r24
- 234:	99 1f       	adc	r25, r25
- 236:	57 df       	rcall	.-338    	; 0xe6 <PWM>
+ 184:	80 91 64 00 	lds	r24, 0x0064	; 0x800064 <adc_sensor1>
+ 188:	90 91 65 00 	lds	r25, 0x0065	; 0x800065 <adc_sensor1+0x1>
+ 18c:	88 0f       	add	r24, r24
+ 18e:	99 1f       	adc	r25, r25
+ 190:	ae df       	rcall	.-164    	; 0xee <PWM>
 		}
 	}
 }
- 238:	ff 91       	pop	r31
- 23a:	ef 91       	pop	r30
- 23c:	bf 91       	pop	r27
- 23e:	af 91       	pop	r26
- 240:	9f 91       	pop	r25
- 242:	8f 91       	pop	r24
- 244:	7f 91       	pop	r23
- 246:	6f 91       	pop	r22
- 248:	5f 91       	pop	r21
- 24a:	4f 91       	pop	r20
- 24c:	3f 91       	pop	r19
- 24e:	2f 91       	pop	r18
- 250:	0f 90       	pop	r0
- 252:	0f be       	out	0x3f, r0	; 63
- 254:	0f 90       	pop	r0
- 256:	1f 90       	pop	r1
- 258:	18 95       	reti
+ 192:	ff 91       	pop	r31
+ 194:	ef 91       	pop	r30
+ 196:	bf 91       	pop	r27
+ 198:	af 91       	pop	r26
+ 19a:	9f 91       	pop	r25
+ 19c:	8f 91       	pop	r24
+ 19e:	7f 91       	pop	r23
+ 1a0:	6f 91       	pop	r22
+ 1a2:	5f 91       	pop	r21
+ 1a4:	4f 91       	pop	r20
+ 1a6:	3f 91       	pop	r19
+ 1a8:	2f 91       	pop	r18
+ 1aa:	0f 90       	pop	r0
+ 1ac:	0f be       	out	0x3f, r0	; 63
+ 1ae:	0f 90       	pop	r0
+ 1b0:	1f 90       	pop	r1
+ 1b2:	18 95       	reti
 
-0000025a <__vector_1>:
+000001b4 <__vector_1>:
 ISR(INT0_vect)
 {
- 25a:	1f 92       	push	r1
- 25c:	0f 92       	push	r0
- 25e:	0f b6       	in	r0, 0x3f	; 63
- 260:	0f 92       	push	r0
- 262:	11 24       	eor	r1, r1
- 264:	8f 93       	push	r24
+ 1b4:	1f 92       	push	r1
+ 1b6:	0f 92       	push	r0
+ 1b8:	0f b6       	in	r0, 0x3f	; 63
+ 1ba:	0f 92       	push	r0
+ 1bc:	11 24       	eor	r1, r1
+ 1be:	8f 93       	push	r24
 	if(_Status==1)
- 266:	80 91 6a 00 	lds	r24, 0x006A	; 0x80006a <_Status>
- 26a:	81 30       	cpi	r24, 0x01	; 1
- 26c:	19 f4       	brne	.+6      	; 0x274 <__vector_1+0x1a>
+ 1c0:	80 91 6c 00 	lds	r24, 0x006C	; 0x80006c <_Status>
+ 1c4:	81 30       	cpi	r24, 0x01	; 1
+ 1c6:	19 f4       	brne	.+6      	; 0x1ce <__vector_1+0x1a>
 	{
 		_Status=0;
- 26e:	10 92 6a 00 	sts	0x006A, r1	; 0x80006a <_Status>
- 272:	03 c0       	rjmp	.+6      	; 0x27a <__vector_1+0x20>
+ 1c8:	10 92 6c 00 	sts	0x006C, r1	; 0x80006c <_Status>
+ 1cc:	03 c0       	rjmp	.+6      	; 0x1d4 <__vector_1+0x20>
 	}
 	else
 	{
 		_Status=1;
- 274:	81 e0       	ldi	r24, 0x01	; 1
- 276:	80 93 6a 00 	sts	0x006A, r24	; 0x80006a <_Status>
+ 1ce:	81 e0       	ldi	r24, 0x01	; 1
+ 1d0:	80 93 6c 00 	sts	0x006C, r24	; 0x80006c <_Status>
 	}
- 27a:	8f 91       	pop	r24
- 27c:	0f 90       	pop	r0
- 27e:	0f be       	out	0x3f, r0	; 63
- 280:	0f 90       	pop	r0
- 282:	1f 90       	pop	r1
- 284:	18 95       	reti
+}
+ 1d4:	8f 91       	pop	r24
+ 1d6:	0f 90       	pop	r0
+ 1d8:	0f be       	out	0x3f, r0	; 63
+ 1da:	0f 90       	pop	r0
+ 1dc:	1f 90       	pop	r1
+ 1de:	18 95       	reti
 
-00000286 <_exit>:
- 286:	f8 94       	cli
+000001e0 <ReadControlbyte>:
 
-00000288 <__stop_program>:
- 288:	ff cf       	rjmp	.-2      	; 0x288 <__stop_program>
+//////////////////////////////////////////////////////////////////////////
+ void ReadControlbyte()
+ {	
+ 1e0:	cf 93       	push	r28
+ 1e2:	df 93       	push	r29
+	 for(int i=0; i<3; i++)
+	 {
+		 _pc[i]=GetChar();
+ 1e4:	6d df       	rcall	.-294    	; 0xc0 <GetChar>
+ 1e6:	c8 e6       	ldi	r28, 0x68	; 104
+ 1e8:	d0 e0       	ldi	r29, 0x00	; 0
+ 1ea:	88 83       	st	Y, r24
+ 1ec:	69 df       	rcall	.-302    	; 0xc0 <GetChar>
+ 1ee:	89 83       	std	Y+1, r24	; 0x01
+ 1f0:	67 df       	rcall	.-306    	; 0xc0 <GetChar>
+ 1f2:	8a 83       	std	Y+2, r24	; 0x02
+	 }
+ }
+ 1f4:	df 91       	pop	r29
+ 1f6:	cf 91       	pop	r28
+ 1f8:	08 95       	ret
+
+000001fa <PcTask>:
+ void PcTask()
+ {
+	 if (_pc[0]==0x63)
+ 1fa:	80 91 68 00 	lds	r24, 0x0068	; 0x800068 <_pc>
+ 1fe:	83 36       	cpi	r24, 0x63	; 99
+ 200:	19 f4       	brne	.+6      	; 0x208 <PcTask+0xe>
+	 {
+		 _Com=1;
+ 202:	81 e0       	ldi	r24, 0x01	; 1
+ 204:	80 93 6b 00 	sts	0x006B, r24	; 0x80006b <_Com>
+ 208:	08 95       	ret
+
+0000020a <main>:
+void PcTask();
+
+int main(void)
+{
+	
+	DDRD|=(1<<PIND7);	//EN12
+ 20a:	8f 9a       	sbi	0x11, 7	; 17
+	DDRB|=(1<<PINB0);	//EN34
+ 20c:	b8 9a       	sbi	0x17, 0	; 23
+	PORTD|=(1<<PIND7);
+ 20e:	97 9a       	sbi	0x12, 7	; 18
+	PORTB|=(1<<PINB0);
+ 210:	c0 9a       	sbi	0x18, 0	; 24
+	DDRD &=~((1<<PIND2)|(1<<PIND3)); //input interr
+ 212:	81 b3       	in	r24, 0x11	; 17
+ 214:	83 7f       	andi	r24, 0xF3	; 243
+ 216:	81 bb       	out	0x11, r24	; 17
+	
+	ADCInit();
+ 218:	6f df       	rcall	.-290    	; 0xf8 <ADCInit>
+	PWMInit();
+ 21a:	56 df       	rcall	.-340    	; 0xc8 <PWMInit>
+	UartInit();
+ 21c:	30 df       	rcall	.-416    	; 0x7e <UartInit>
+
+	PWM(0);
+ 21e:	80 e0       	ldi	r24, 0x00	; 0
+ 220:	90 e0       	ldi	r25, 0x00	; 0
+ 222:	65 df       	rcall	.-310    	; 0xee <PWM>
+	
+	GICR=(1<<INT0);
+ 224:	80 e4       	ldi	r24, 0x40	; 64
+ 226:	8b bf       	out	0x3b, r24	; 59
+	MCUCR|=(1<<ISC00);		//		(1<<ISC00);any logical change			//	(1<<ISC01)|(1<<ISC00);rising edge
+ 228:	85 b7       	in	r24, 0x35	; 53
+ 22a:	81 60       	ori	r24, 0x01	; 1
+ 22c:	85 bf       	out	0x35, r24	; 53
+	
+	sei();
+ 22e:	78 94       	sei
+		//////////////////////////////////////////////////////////////////////////
+			//break;
+		}
+		if(_Com)
+		{
+			SendADCValue(_pc[1],ReadAdc(_pc[1]));
+ 230:	c8 e6       	ldi	r28, 0x68	; 104
+ 232:	d0 e0       	ldi	r29, 0x00	; 0
+	
+	sei();
+	
+    while (1) 
+    {		
+		OnAdc();
+ 234:	7a df       	rcall	.-268    	; 0x12a <OnAdc>
+		adc_board=ReadAdc(__ch_board);
+ 236:	80 91 61 00 	lds	r24, 0x0061	; 0x800061 <__ch_board>
+ 23a:	6c df       	rcall	.-296    	; 0x114 <ReadAdc>
+ 23c:	90 93 67 00 	sts	0x0067, r25	; 0x800067 <adc_board+0x1>
+ 240:	80 93 66 00 	sts	0x0066, r24	; 0x800066 <adc_board>
+ 244:	8f e0       	ldi	r24, 0x0F	; 15
+ 246:	97 e2       	ldi	r25, 0x27	; 39
+ 248:	01 97       	sbiw	r24, 0x01	; 1
+ 24a:	f1 f7       	brne	.-4      	; 0x248 <main+0x3e>
+ 24c:	00 c0       	rjmp	.+0      	; 0x24e <main+0x44>
+ 24e:	00 00       	nop
+		_delay_ms(5);
+		adc_sensor1=ReadAdc(__ch_sensor1);
+ 250:	80 91 60 00 	lds	r24, 0x0060	; 0x800060 <__ch_sensor1>
+ 254:	5f df       	rcall	.-322    	; 0x114 <ReadAdc>
+ 256:	90 93 65 00 	sts	0x0065, r25	; 0x800065 <adc_sensor1+0x1>
+ 25a:	80 93 64 00 	sts	0x0064, r24	; 0x800064 <adc_sensor1>
+ 25e:	8f e0       	ldi	r24, 0x0F	; 15
+ 260:	97 e2       	ldi	r25, 0x27	; 39
+ 262:	01 97       	sbiw	r24, 0x01	; 1
+ 264:	f1 f7       	brne	.-4      	; 0x262 <main+0x58>
+ 266:	00 c0       	rjmp	.+0      	; 0x268 <main+0x5e>
+ 268:	00 00       	nop
+		_delay_ms(5);
+		if (_Status)
+ 26a:	80 91 6c 00 	lds	r24, 0x006C	; 0x80006c <_Status>
+ 26e:	88 23       	and	r24, r24
+ 270:	71 f0       	breq	.+28     	; 0x28e <main+0x84>
+			//SendADCValue(_add_ch_board,adc_board);
+			//_delay_ms(5);
+			//SendADCValue(_add_ch_sensor1,adc_sensor1);
+			//_delay_ms(5);
+		//////////////////////////////////////////////////////////////////////////
+			SendInfoStatus(0xff,0xff,0xff);
+ 272:	4f ef       	ldi	r20, 0xFF	; 255
+ 274:	6f ef       	ldi	r22, 0xFF	; 255
+ 276:	8f ef       	ldi	r24, 0xFF	; 255
+ 278:	f6 de       	rcall	.-532    	; 0x66 <SendInfoStatus>
+			ReadControlbyte();
+ 27a:	b2 df       	rcall	.-156    	; 0x1e0 <ReadControlbyte>
+ 27c:	8f ec       	ldi	r24, 0xCF	; 207
+ 27e:	97 e0       	ldi	r25, 0x07	; 7
+ 280:	01 97       	sbiw	r24, 0x01	; 1
+ 282:	f1 f7       	brne	.-4      	; 0x280 <main+0x76>
+ 284:	00 c0       	rjmp	.+0      	; 0x286 <main+0x7c>
+ 286:	00 00       	nop
+			_delay_ms(1);
+			PcTask();
+ 288:	b8 df       	rcall	.-144    	; 0x1fa <PcTask>
+			
+			_Status=0;
+ 28a:	10 92 6c 00 	sts	0x006C, r1	; 0x80006c <_Status>
+		//////////////////////////////////////////////////////////////////////////
+			//break;
+		}
+		if(_Com)
+ 28e:	80 91 6b 00 	lds	r24, 0x006B	; 0x80006b <_Com>
+ 292:	88 23       	and	r24, r24
+ 294:	39 f0       	breq	.+14     	; 0x2a4 <main+0x9a>
+		{
+			SendADCValue(_pc[1],ReadAdc(_pc[1]));
+ 296:	89 81       	ldd	r24, Y+1	; 0x01
+ 298:	3d df       	rcall	.-390    	; 0x114 <ReadAdc>
+ 29a:	bc 01       	movw	r22, r24
+ 29c:	89 81       	ldd	r24, Y+1	; 0x01
+ 29e:	04 df       	rcall	.-504    	; 0xa8 <SendADCValue>
+			_Com=0;
+ 2a0:	10 92 6b 00 	sts	0x006B, r1	; 0x80006b <_Com>
+		}
+		OffAdc();
+ 2a4:	44 df       	rcall	.-376    	; 0x12e <OffAdc>
+ 2a6:	9f ef       	ldi	r25, 0xFF	; 255
+ 2a8:	29 e6       	ldi	r18, 0x69	; 105
+ 2aa:	88 e1       	ldi	r24, 0x18	; 24
+ 2ac:	91 50       	subi	r25, 0x01	; 1
+ 2ae:	20 40       	sbci	r18, 0x00	; 0
+ 2b0:	80 40       	sbci	r24, 0x00	; 0
+ 2b2:	e1 f7       	brne	.-8      	; 0x2ac <main+0xa2>
+ 2b4:	00 c0       	rjmp	.+0      	; 0x2b6 <main+0xac>
+ 2b6:	00 00       	nop
+ 2b8:	bd cf       	rjmp	.-134    	; 0x234 <main+0x2a>
+
+000002ba <_exit>:
+ 2ba:	f8 94       	cli
+
+000002bc <__stop_program>:
+ 2bc:	ff cf       	rjmp	.-2      	; 0x2bc <__stop_program>

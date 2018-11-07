@@ -16,6 +16,8 @@ void UartInit(void);
 void SendChar(char data);
 void SendADCValue(unsigned char _chane,uint16_t data);
 void SendInfoStatus(unsigned char info,unsigned char abb,unsigned char spec);
+char GetChar();
+void SendADCValueFomSelectChanel(char _data);
 //////////////////////////////////////////////////////////////////////////
 //PWM
 //////////////////////////////////////////////////////////////////////////

@@ -9,9 +9,13 @@
 #define F_CPU 8000000UL
 #include <util/delay.h>
 #include <avr/interrupt.h>
+#include <stdlib.h>
+
 #include "Init.h"
 
 volatile static	uint8_t _Status=0;
+volatile static uint8_t _Com=0;
+volatile static unsigned char _pc[3];
 volatile static uint16_t adc_board;
 volatile static uint16_t adc_sensor1;
 volatile static uint16_t adc_sensor2;
@@ -20,10 +24,12 @@ volatile const uint8_t __ch_board=6;	//chanel0
 volatile const uint8_t __ch_sensor1=0;	//chanel1
 volatile const uint8_t __ch_sensor2=1;	//chanel2
 volatile const uint8_t __ch_sensor3=2;	//chanel3
-volatile const uint8_t _add_ch_board=0x20;	//chanel0
-volatile const uint8_t _add_ch_sensor1=0x21;	//chanel1
-volatile const uint8_t _add_ch_sensor2=0x22;	//chanel2
-volatile const uint8_t _add_ch_sensor3=0x23;	//chanel3
+volatile const uint8_t _add_ch_board=0x36;	//chanel0
+volatile const uint8_t _add_ch_sensor1=0x30;	//chanel1
+volatile const uint8_t _add_ch_sensor2=0x31;	//chanel2
+volatile const uint8_t _add_ch_sensor3=0x33;	//chanel3
+void ReadControlbyte();
+void PcTask();
 
 int main(void)
 {
@@ -55,10 +61,24 @@ int main(void)
 		if (_Status)
 		{	
 			//Uart comunication Send data do pc
-			SendADCValue(_add_ch_board,adc_board);
-			_delay_ms(5);
-			SendADCValue(_add_ch_sensor1,adc_sensor1);
-			_delay_ms(5);
+			//SendADCValue(_add_ch_board,adc_board);
+			//_delay_ms(5);
+			//SendADCValue(_add_ch_sensor1,adc_sensor1);
+			//_delay_ms(5);
+		//////////////////////////////////////////////////////////////////////////
+			SendInfoStatus(0xff,0xff,0xff);
+			ReadControlbyte();
+			_delay_ms(1);
+			PcTask();
+			
+			_Status=0;
+		//////////////////////////////////////////////////////////////////////////
+			//break;
+		}
+		if(_Com)
+		{
+			SendADCValue(_pc[1],ReadAdc(_pc[1]));
+			_Com=0;
 		}
 		OffAdc();
 		_delay_ms(1000);
@@ -90,3 +110,19 @@ ISR(INT0_vect)
 		_Status=1;
 	}
 }
+
+//////////////////////////////////////////////////////////////////////////
+ void ReadControlbyte()
+ {	
+	 for(int i=0; i<3; i++)
+	 {
+		 _pc[i]=GetChar();
+	 }
+ }
+ void PcTask()
+ {
+	 if (_pc[0]==0x63)
+	 {
+		 _Com=1;
+	 }
+ }
