@@ -66,7 +66,7 @@ int main(void)
 			//SendADCValue(_add_ch_sensor1,adc_sensor1);
 			//_delay_ms(5);
 		//////////////////////////////////////////////////////////////////////////
-			SendInfoStatus(0xff,0xff,0xff);
+			//SendInfoStatus(0xff,0xff,0xff);
 			ReadControlbyte();
 			_delay_ms(1);
 			PcTask();
@@ -79,6 +79,10 @@ int main(void)
 		{
 			SendADCValue(_pc[1],ReadAdc(_pc[1]));
 			_Com=0;
+			 if(_pc[2]==0x6D)
+			 {
+				 _Status=1;
+			 }
 		}
 		OffAdc();
 		_delay_ms(1000);
@@ -125,4 +129,5 @@ ISR(INT0_vect)
 	 {
 		 _Com=1;
 	 }
+	
  }

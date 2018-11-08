@@ -106,5 +106,5 @@ void OffAdc()
 }
 void SendADCValueFomSelectChanel(char _data)
 {
-	SendADCValue(((uint8_t)_data+32),ReadAdc((uint8_t)_data));
+	SendADCValue(((uint8_t)_data),ReadAdc((uint8_t)_data));
 }

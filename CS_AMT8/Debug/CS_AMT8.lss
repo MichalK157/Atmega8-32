@@ -3,31 +3,31 @@ CS_AMT8.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .text         000002be  00000000  00000000  00000094  2**1
+  0 .text         000002c2  00000000  00000000  00000094  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  1 .data         00000002  00800060  000002be  00000352  2**0
+  1 .data         00000002  00800060  000002c2  00000356  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  2 .bss          0000000b  00800062  00800062  00000354  2**0
+  2 .bss          0000000b  00800062  00800062  00000358  2**0
                   ALLOC
-  3 .comment      00000030  00000000  00000000  00000354  2**0
+  3 .comment      00000030  00000000  00000000  00000358  2**0
                   CONTENTS, READONLY
-  4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  00000384  2**2
+  4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  00000388  2**2
                   CONTENTS, READONLY
-  5 .debug_aranges 000000b8  00000000  00000000  000003c0  2**0
+  5 .debug_aranges 000000b8  00000000  00000000  000003c4  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_info   00000d2c  00000000  00000000  00000478  2**0
+  6 .debug_info   00000cff  00000000  00000000  0000047c  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_abbrev 00000819  00000000  00000000  000011a4  2**0
+  7 .debug_abbrev 00000819  00000000  00000000  0000117b  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   0000063d  00000000  00000000  000019bd  2**0
+  8 .debug_line   00000649  00000000  00000000  00001994  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_frame  000001b0  00000000  00000000  00001ffc  2**2
+  9 .debug_frame  000001b0  00000000  00000000  00001fe0  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    0000049f  00000000  00000000  000021ac  2**0
+ 10 .debug_str    0000049f  00000000  00000000  00002190  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    0000044a  00000000  00000000  0000264b  2**0
+ 11 .debug_loc    0000044a  00000000  00000000  0000262f  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 00000098  00000000  00000000  00002a95  2**0
+ 12 .debug_ranges 00000098  00000000  00000000  00002a79  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -65,7 +65,7 @@ Disassembly of section .text:
   32:	10 e0       	ldi	r17, 0x00	; 0
   34:	a0 e6       	ldi	r26, 0x60	; 96
   36:	b0 e0       	ldi	r27, 0x00	; 0
-  38:	ee eb       	ldi	r30, 0xBE	; 190
+  38:	e2 ec       	ldi	r30, 0xC2	; 194
   3a:	f2 e0       	ldi	r31, 0x02	; 2
   3c:	02 c0       	rjmp	.+4      	; 0x42 <__SREG__+0x3>
   3e:	05 90       	lpm	r0, Z+
@@ -88,7 +88,7 @@ Disassembly of section .text:
   54:	b2 07       	cpc	r27, r18
   56:	e1 f7       	brne	.-8      	; 0x50 <.do_clear_bss_loop>
   58:	d8 d0       	rcall	.+432    	; 0x20a <main>
-  5a:	2f c1       	rjmp	.+606    	; 0x2ba <_exit>
+  5a:	31 c1       	rjmp	.+610    	; 0x2be <_exit>
 
 0000005c <__bad_interrupt>:
   5c:	d1 cf       	rjmp	.-94     	; 0x0 <__vectors>
@@ -510,97 +510,105 @@ int main(void)
 			SendADCValue(_pc[1],ReadAdc(_pc[1]));
  230:	c8 e6       	ldi	r28, 0x68	; 104
  232:	d0 e0       	ldi	r29, 0x00	; 0
+			_Com=0;
+			 if(_pc[2]==0x63)
+			 {
+				 _Status=1;
+ 234:	11 e0       	ldi	r17, 0x01	; 1
 	
 	sei();
 	
     while (1) 
     {		
 		OnAdc();
- 234:	7a df       	rcall	.-268    	; 0x12a <OnAdc>
+ 236:	79 df       	rcall	.-270    	; 0x12a <OnAdc>
 		adc_board=ReadAdc(__ch_board);
- 236:	80 91 61 00 	lds	r24, 0x0061	; 0x800061 <__ch_board>
- 23a:	6c df       	rcall	.-296    	; 0x114 <ReadAdc>
- 23c:	90 93 67 00 	sts	0x0067, r25	; 0x800067 <adc_board+0x1>
- 240:	80 93 66 00 	sts	0x0066, r24	; 0x800066 <adc_board>
- 244:	8f e0       	ldi	r24, 0x0F	; 15
- 246:	97 e2       	ldi	r25, 0x27	; 39
- 248:	01 97       	sbiw	r24, 0x01	; 1
- 24a:	f1 f7       	brne	.-4      	; 0x248 <main+0x3e>
- 24c:	00 c0       	rjmp	.+0      	; 0x24e <main+0x44>
- 24e:	00 00       	nop
+ 238:	80 91 61 00 	lds	r24, 0x0061	; 0x800061 <__ch_board>
+ 23c:	6b df       	rcall	.-298    	; 0x114 <ReadAdc>
+ 23e:	90 93 67 00 	sts	0x0067, r25	; 0x800067 <adc_board+0x1>
+ 242:	80 93 66 00 	sts	0x0066, r24	; 0x800066 <adc_board>
+ 246:	8f e0       	ldi	r24, 0x0F	; 15
+ 248:	97 e2       	ldi	r25, 0x27	; 39
+ 24a:	01 97       	sbiw	r24, 0x01	; 1
+ 24c:	f1 f7       	brne	.-4      	; 0x24a <main+0x40>
+ 24e:	00 c0       	rjmp	.+0      	; 0x250 <main+0x46>
+ 250:	00 00       	nop
 		_delay_ms(5);
 		adc_sensor1=ReadAdc(__ch_sensor1);
- 250:	80 91 60 00 	lds	r24, 0x0060	; 0x800060 <__ch_sensor1>
- 254:	5f df       	rcall	.-322    	; 0x114 <ReadAdc>
- 256:	90 93 65 00 	sts	0x0065, r25	; 0x800065 <adc_sensor1+0x1>
- 25a:	80 93 64 00 	sts	0x0064, r24	; 0x800064 <adc_sensor1>
- 25e:	8f e0       	ldi	r24, 0x0F	; 15
- 260:	97 e2       	ldi	r25, 0x27	; 39
- 262:	01 97       	sbiw	r24, 0x01	; 1
- 264:	f1 f7       	brne	.-4      	; 0x262 <main+0x58>
- 266:	00 c0       	rjmp	.+0      	; 0x268 <main+0x5e>
- 268:	00 00       	nop
+ 252:	80 91 60 00 	lds	r24, 0x0060	; 0x800060 <__ch_sensor1>
+ 256:	5e df       	rcall	.-324    	; 0x114 <ReadAdc>
+ 258:	90 93 65 00 	sts	0x0065, r25	; 0x800065 <adc_sensor1+0x1>
+ 25c:	80 93 64 00 	sts	0x0064, r24	; 0x800064 <adc_sensor1>
+ 260:	8f e0       	ldi	r24, 0x0F	; 15
+ 262:	97 e2       	ldi	r25, 0x27	; 39
+ 264:	01 97       	sbiw	r24, 0x01	; 1
+ 266:	f1 f7       	brne	.-4      	; 0x264 <main+0x5a>
+ 268:	00 c0       	rjmp	.+0      	; 0x26a <main+0x60>
+ 26a:	00 00       	nop
 		_delay_ms(5);
 		if (_Status)
- 26a:	80 91 6c 00 	lds	r24, 0x006C	; 0x80006c <_Status>
- 26e:	88 23       	and	r24, r24
- 270:	71 f0       	breq	.+28     	; 0x28e <main+0x84>
-			//SendADCValue(_add_ch_board,adc_board);
+ 26c:	80 91 6c 00 	lds	r24, 0x006C	; 0x80006c <_Status>
+ 270:	88 23       	and	r24, r24
+ 272:	51 f0       	breq	.+20     	; 0x288 <main+0x7e>
 			//_delay_ms(5);
 			//SendADCValue(_add_ch_sensor1,adc_sensor1);
 			//_delay_ms(5);
 		//////////////////////////////////////////////////////////////////////////
-			SendInfoStatus(0xff,0xff,0xff);
- 272:	4f ef       	ldi	r20, 0xFF	; 255
- 274:	6f ef       	ldi	r22, 0xFF	; 255
- 276:	8f ef       	ldi	r24, 0xFF	; 255
- 278:	f6 de       	rcall	.-532    	; 0x66 <SendInfoStatus>
+			//SendInfoStatus(0xff,0xff,0xff);
 			ReadControlbyte();
- 27a:	b2 df       	rcall	.-156    	; 0x1e0 <ReadControlbyte>
- 27c:	8f ec       	ldi	r24, 0xCF	; 207
- 27e:	97 e0       	ldi	r25, 0x07	; 7
- 280:	01 97       	sbiw	r24, 0x01	; 1
- 282:	f1 f7       	brne	.-4      	; 0x280 <main+0x76>
- 284:	00 c0       	rjmp	.+0      	; 0x286 <main+0x7c>
- 286:	00 00       	nop
+ 274:	b5 df       	rcall	.-150    	; 0x1e0 <ReadControlbyte>
+ 276:	8f ec       	ldi	r24, 0xCF	; 207
+ 278:	97 e0       	ldi	r25, 0x07	; 7
+ 27a:	01 97       	sbiw	r24, 0x01	; 1
+ 27c:	f1 f7       	brne	.-4      	; 0x27a <main+0x70>
+ 27e:	00 c0       	rjmp	.+0      	; 0x280 <main+0x76>
+ 280:	00 00       	nop
 			_delay_ms(1);
 			PcTask();
- 288:	b8 df       	rcall	.-144    	; 0x1fa <PcTask>
+ 282:	bb df       	rcall	.-138    	; 0x1fa <PcTask>
 			
 			_Status=0;
- 28a:	10 92 6c 00 	sts	0x006C, r1	; 0x80006c <_Status>
+ 284:	10 92 6c 00 	sts	0x006C, r1	; 0x80006c <_Status>
 		//////////////////////////////////////////////////////////////////////////
 			//break;
 		}
 		if(_Com)
- 28e:	80 91 6b 00 	lds	r24, 0x006B	; 0x80006b <_Com>
- 292:	88 23       	and	r24, r24
- 294:	39 f0       	breq	.+14     	; 0x2a4 <main+0x9a>
+ 288:	80 91 6b 00 	lds	r24, 0x006B	; 0x80006b <_Com>
+ 28c:	88 23       	and	r24, r24
+ 28e:	61 f0       	breq	.+24     	; 0x2a8 <main+0x9e>
 		{
 			SendADCValue(_pc[1],ReadAdc(_pc[1]));
+ 290:	89 81       	ldd	r24, Y+1	; 0x01
+ 292:	40 df       	rcall	.-384    	; 0x114 <ReadAdc>
+ 294:	bc 01       	movw	r22, r24
  296:	89 81       	ldd	r24, Y+1	; 0x01
- 298:	3d df       	rcall	.-390    	; 0x114 <ReadAdc>
- 29a:	bc 01       	movw	r22, r24
- 29c:	89 81       	ldd	r24, Y+1	; 0x01
- 29e:	04 df       	rcall	.-504    	; 0xa8 <SendADCValue>
+ 298:	07 df       	rcall	.-498    	; 0xa8 <SendADCValue>
 			_Com=0;
- 2a0:	10 92 6b 00 	sts	0x006B, r1	; 0x80006b <_Com>
+ 29a:	10 92 6b 00 	sts	0x006B, r1	; 0x80006b <_Com>
+			 if(_pc[2]==0x63)
+ 29e:	8a 81       	ldd	r24, Y+2	; 0x02
+ 2a0:	83 36       	cpi	r24, 0x63	; 99
+ 2a2:	11 f4       	brne	.+4      	; 0x2a8 <main+0x9e>
+			 {
+				 _Status=1;
+ 2a4:	10 93 6c 00 	sts	0x006C, r17	; 0x80006c <_Status>
+			 }
 		}
 		OffAdc();
- 2a4:	44 df       	rcall	.-376    	; 0x12e <OffAdc>
- 2a6:	9f ef       	ldi	r25, 0xFF	; 255
- 2a8:	29 e6       	ldi	r18, 0x69	; 105
- 2aa:	88 e1       	ldi	r24, 0x18	; 24
- 2ac:	91 50       	subi	r25, 0x01	; 1
- 2ae:	20 40       	sbci	r18, 0x00	; 0
- 2b0:	80 40       	sbci	r24, 0x00	; 0
- 2b2:	e1 f7       	brne	.-8      	; 0x2ac <main+0xa2>
- 2b4:	00 c0       	rjmp	.+0      	; 0x2b6 <main+0xac>
- 2b6:	00 00       	nop
- 2b8:	bd cf       	rjmp	.-134    	; 0x234 <main+0x2a>
+ 2a8:	42 df       	rcall	.-380    	; 0x12e <OffAdc>
+ 2aa:	9f ef       	ldi	r25, 0xFF	; 255
+ 2ac:	29 e6       	ldi	r18, 0x69	; 105
+ 2ae:	88 e1       	ldi	r24, 0x18	; 24
+ 2b0:	91 50       	subi	r25, 0x01	; 1
+ 2b2:	20 40       	sbci	r18, 0x00	; 0
+ 2b4:	80 40       	sbci	r24, 0x00	; 0
+ 2b6:	e1 f7       	brne	.-8      	; 0x2b0 <main+0xa6>
+ 2b8:	00 c0       	rjmp	.+0      	; 0x2ba <main+0xb0>
+ 2ba:	00 00       	nop
+ 2bc:	bc cf       	rjmp	.-136    	; 0x236 <main+0x2c>
 
-000002ba <_exit>:
- 2ba:	f8 94       	cli
+000002be <_exit>:
+ 2be:	f8 94       	cli
 
-000002bc <__stop_program>:
- 2bc:	ff cf       	rjmp	.-2      	; 0x2bc <__stop_program>
+000002c0 <__stop_program>:
+ 2c0:	ff cf       	rjmp	.-2      	; 0x2c0 <__stop_program>
